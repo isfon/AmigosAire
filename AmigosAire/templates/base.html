@@ -1,0 +1,276 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static "ico/favicon.ico" %}">
+
+    <title>{% block titulo %}{% endblock titulo %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="{% static "js/fancybox/jquery.fancybox.css" %}" rel="stylesheet" />
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../{% static "" %}js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+		
+	<!-- Menu -->
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="{% url 'index' %}">MENÚ</a></h1>
+			<i class="fa fa-times menu-close"></i>
+			<a href="#home" class="smoothScroll">Home</a>
+			<a href="#about" class="smoothScroll">Nosotros</a>
+			<a href="#portfolio" class="smoothScroll">Galería</a>
+			<a href="#services" class="smoothScroll">Servicios</a>
+			<a href="#contact" class="smoothScroll">Contacto</a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-dribbble"></i></a>
+			<a href="#"><i class="fa fa-envelope"></i></a>
+		</div>
+		
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="fa fa-bars"></i></div>
+	</nav>
+
+	<section id="home" name="home"></section>
+	<div id="headerwrap" style="background: url({% static "img/logo_globo.jpg" %}) no-repeat center;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<h1>AMIGOS DEL GLOBO</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<section id="about" name="about"></section>
+	<div id="aboutwrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 name">
+					<img class="img-responsive" src="{% static "img/F3.jpg" %}">
+					<p>AMIGOS DEL GLOBO</p>
+					<div class="name-label"></div>
+				</div>
+				<div class="col-lg-8 name-desc">
+					<h2>¡Quienes Somos!</h2>
+					<div class="name-zig"></div>
+					
+					<div class="col-md-6">
+						<p>Somos una empresa Mexicana en la cual puedes vivir la experiencia de volar en globo aerostático y a su vez conocer nuestra herencia cultural deleitándote de una fascinante vista en Pabellón de Arteaga, Ags.</p>
+
+					</div>
+					<div class="col-md-6">
+						<p>Desde 1783 el sueño humano de volar se hizo realidad siendo testigo de este hecho por primera vez la ciudad de Paris. Desde entonces el vuelo en globo ha causado asombro en todo el mundo.</p>
+					</div>
+					
+				</div>
+		
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /aboutwrap -->
+	
+	<div class="sep about" style="background-image: url({% static "img/d3.jpg" %});" data-stellar-background-ratio="2.5" ></div>
+	
+	<section id="portfolio" name="portfolio"></section>
+	<div id="portfoliowrap">
+		<div class="container">
+			<div class="row">
+				<h1>GALERÍA</h1>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide1.jpg" %}"><img class="img-responsive" src="{% static "img/slide1.jpg" %}" alt="" height="500"></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div><!-- col-lg-4 -->
+				
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide2.jpg" %}"><img class="img-responsive" src="{% static "img/slide2.jpg" %}" alt="" height="500"></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div><!-- col-lg-4 -->
+				
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide3.jpg" %}"><img class="img-responsive" src="{% static "img/slide4.jpg" %}" alt=""></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div><!-- col-lg-4 -->
+			</div><!-- /row -->
+	
+			<div class="row mt">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide4.jpg" %}"><img class="img-responsive" src="{% static "img/slide4.jpg" %}" alt=""></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div><!-- col-lg-4 -->
+				
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide5.jpg" %}"><img class="img-responsive" src="{% static "img/slide5.jpg" %}" alt=""></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div><!-- col-lg-4 -->
+				
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+					<div class="project-wrapper">
+	                    <div class="project">
+	                        <div class="photo-wrapper">
+	                            <div class="photo">
+	                            	<a class="fancybox" href="{% static "img/slide6.jpg" %}"><img class="img-responsive" src="{% static "img/slide6.jpg" %}" alt=""></a>
+	                            </div>
+	                            <div class="overlay"></div>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sep portfolio" style="background-image: url({% static "img/d4.jpg" %});" data-stellar-background-ratio="0.5"></div>
+	
+	
+	<section id="services" name="services"></section>
+	<div id="servicewrap">
+		<div class="container">
+			<div class="row mt centered">
+				<h1>SERVICIOS</h1>
+				<div class="col-lg-4 proc">
+					<h1 style="font-size:65px;"><i class="fa fa-shopping-basket fa-6"></i></h1>
+					<h3>VUELO TRADICIONAL</h3>
+					<p>Admira desde el cielo compartiendo con otros pasajeros la experiencia única de sentirte libre flotando en uno de los globos más grandes y espectaculares.</p>
+				</div>
+				<div class="col-lg-4 proc">
+					<h1 style="font-size:65px;"><i class="fa fa-gift"></i></h1>
+					<h3>VUELO FELIZ CUMPLEAÑOS</h3>
+					<p>¡El mejor regalo! El cumpleañero sabrá que todo fue planeado para que viva un cumpleaños mágico en compañía de amigos y familiares, desde su llegada nos encargamos de que se vuelva un día inolvidable.</p>
+				</div>
+				<div class="col-lg-4 proc">
+					<h1 style="font-size:65px;"><i class="fa fa-heart"></i></h1>
+					<h3>ENTREGA DE ANILLO</h3>
+					<p>¡Un momento tan importante Requiere un momento único! no puede ser mejor que flotando en un globo, con una vista fascinante, la inesperada lona de ¿Te quieres casar conmigo?, brindis, y posterior a esto el desayuno para festeja el “si, acepto”</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	<section id="contact" name="contact"></section>
+	<div class="sep contact" data-stellar-background-ratio="0.5"></div>
+	
+	<div id="contactwrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<p>CONTACTO!</p>
+					<p>
+						<small>Calle Octava #145<br/>
+						Pabellón de Arteaga, Ags.<br/>
+						México.</small>
+					</p>
+					<p>
+						<small>Tel. 9888-4394<br/>
+						Correo. contacto@amigosdelglobo.com<br/>
+					</p>
+			
+				</div>
+				
+				<div class="col-lg-6">
+					<form role="form">
+					  <div class="form-group">
+					    <label for="exampleInputName1">Nombre</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
+					    <label for="exampleInputEmail1">Correo</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+					    <label for="exampleInputText1">Mensaje</label>
+					    <textarea class="form-control" rows="3"></textarea>
+					  </div>
+					  <button type="submit" class="btn btn-default">Enviar</button>
+					</form>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="{% static "js/classie.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/smoothscroll.js" %}"></script>
+	<script src="{% static "js/jquery.stellar.min.js" %}"></script>
+	<script src="{% static "js/fancybox/jquery.fancybox.js" %}"></script>    
+	<script src="{% static "js/main.js" %}"></script>
+		<script>
+		$(function(){
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 40
+			});
+		});
+		</script>
+		
+		<script type="text/javascript">
+      $(function() {
+        //    fancybox
+          jQuery(".fancybox").fancybox();
+      });
+	   </script>
+
+  </body>
+</html>
