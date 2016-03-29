@@ -9,6 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+AmigosAire/db.sqlite3
 build/
 develop-eggs/
 dist/
