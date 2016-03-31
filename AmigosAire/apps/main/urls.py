@@ -1,10 +1,14 @@
 from django.conf.urls import url, include
 from .views import(
 	IndexView,
-	PlanView,
+	PlanDetailView,
+	PreguntasView,
+	PrivacidadView,
 	)
 
 urlpatterns = [   
 	url(r'^$', IndexView.as_view(), name='index'),
-	url(r'^plan/$', PlanView.as_view(), name='plan'),
+	url(r'^faq/$', PreguntasView.as_view(), name='faq'),
+	url(r'^privacidad/$', PrivacidadView.as_view(), name='privacidad'),
+	url(r'^plan/(?P<slug>.*)/$', PlanDetailView.as_view(), name='plan_detalle'),
 ]

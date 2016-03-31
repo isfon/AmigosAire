@@ -3,11 +3,15 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="{% static "" %}img/apple-icon.png">
-	<link rel="icon" type="image/png" href="{% static "img/favicon.png" %}">
+	<link rel="apple-touch-icon" sizes="76x76" href="{% static "img/apple-icon.png" %}">
+	{% if datos.logo %}
+		<link rel="icon" type="image/png" href="{{ MEDIA_URL }}{{ datos.logo }}">
+	{% else %}
+		<link rel="icon" type="image/png" href="{% static "img/favicon.png" %}">
+	{% endif %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>VUELO TRADICIONAL</title>
+	<title>{{ plan.titulo|upper }}</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -144,7 +148,7 @@
 <!-- End Navbar -->
 
 <div class="wrapper" id="home">
-	<div class="header header-filter" style="background-image: url('{% static "img/fondo.jpg" %}'); height:300px;">
+	<div class="header header-filter" {% if datos.fondo %} style="background-image: url('{{ MEDIA_URL }}{{ datos.fondo }}'); height:300px;" {% else %} style="background-image: url('{% static "img/fondo.jpg" %}'); height:300px;" {% endif %}>
 		<div class="container" style="padding-top:60px;">
 			<div class="row">
 				<div class="col-md-6">
@@ -159,53 +163,43 @@
 			<div class="row">
 				<a href="/#servicios"><h3 class="btn btn-raised btn-info"><i class="material-icons">skip_previous</i> Regresar</h3></a>
 				<div class="col-md-12"> 
-					<h1 class="page-header text-center" style="color:#333;">VUELO TRADICIONAL</h1>
+					<h1 class="page-header text-center" style="color:#333;">{{ plan.titulo|upper }}</h1>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3">
-					<img src="{% static "img/fondo1.jpg" %}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
+				<div class="col-md-4">
+					<img src="{{ MEDIA_URL }}{{ plan.imagen_1 }}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
 				</div>
-				<div class="col-md-3">
-					<img src="{% static "img/fondo2.jpg" %}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
+				<div class="col-md-4">
+					<img src="{{ MEDIA_URL }}{{ plan.imagen_2 }}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
 				</div>
-				<div class="col-md-3">
-					<img src="{% static "img/fondo3.jpg" %}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
-				</div>
-				<div class="col-md-3">
-					<img src="{% static "img/qui1.jpg" %}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
+				<div class="col-md-4">
+					<img src="{{ MEDIA_URL }}{{ plan.imagen_3 }}"style="width: 600px; height: 250px;" class="img-responsive thumbnail">	
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
 					<div class="bs-callout bs-callout-success">
 					  <h4>Incluye</h4>
-					  <li>Recepción con Bebidas Calientes</li>
-					  	<li>Te recibimos con bebidas calientes y galletas mientras observas la preparación de tu globo.</li>
-						<li>Brindis con vino espumoso</li>
-						<li>Juntos brindaran mientras se encuentran flotando. Conoce la tradición.</li>
-						<li>Vuelo privado de 45 a 60 min</li>
-						<li>Podrán Abordar de 2 hasta 14 personas.</li>
-						<li>Otorgamos un certificado para presumir.</li>
-						<li>Seguro de viajero</li>						
+					  {{ plan.incluye|safe }}					
 					</div>
 				</div>
 				<div class="col-md-5">
 					<div class="bs-callout bs-callout-warning">
 					  <h4>Costo</h4>
-					  <li>$2800 por persona.</li>
-					  <p>Es una aventura completa, disfrutala ya!</p>
+					  {{ plan.precio|safe }}
 					  <strong><p>Contacto:</p></strong>
-					  <li>Teléfono: 465 103 2345</li>
-					  <li>Email: globos@gmail.com</li>
+					  <li>Teléfono 1: {{ datos.telefono_1 }}</li>
+					  <li>Teléfono 2: {{ datos.telefono_2 }}</li>
+					  <li>Email: {{ datos.email }}</li>
 					  <strong><p>Redes Sociales:</p></strong>
-						<a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple">
+						<a rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="{{ datos.twitter }}" target="_blank" class="btn btn-simple">
 							<i class="fa fa-twitter"></i>
 						</a>
-						<a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple">
+						<a rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="{{ datos.facebook }}" target="_blank" class="btn btn-simple">
 							<i class="fa fa-facebook-square"></i>
 						</a>
-						<a rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple">
+						<a rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="{{ datos.instagram }}" target="_blank" class="btn btn-simple">
 							<i class="fa fa-instagram"></i>
 						</a>
 					</div>
