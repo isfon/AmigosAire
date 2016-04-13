@@ -92,7 +92,11 @@
 	    	<a href="{% url 'index' %}">
 	        	<div class="logo-container">
 	                <div class="logo" style="border:none;">
-	                    <img src="{% static "img/logo_.png" %}" alt="Creative Tim Logo" rel="tooltip" title="<b>Amigos Del Globo</b> Ven y disfruta de las mejores vistas." data-placement="bottom" data-html="true">
+	                    {% if datos.logo %}
+	                		<img src="{{ MEDIA_URL }}{{ datos.logo }}" alt="Creative Tim Logo" rel="tooltip" title="<b>Amigos Del Globo</b> Ven y disfruta de las mejores vistas." data-placement="bottom" data-html="true">
+	                	{% else %}
+	                		<img src="{% static "img/logo_.png" %}" alt="Creative Tim Logo" rel="tooltip" title="<b>Amigos Del Globo</b> Ven y disfruta de las mejores vistas." data-placement="bottom" data-html="true">
+	                	{% endif %}
 	                </div>
 	                <div class="navbar-brand">
 	                    <strong style="color:white;">AMIGOS DEL GLOBO</strong>
@@ -212,14 +216,14 @@
 	    <div class="container">
 	        <nav class="pull-left">
 	            <ul>
-					<li>
-						<a href="#">
-							AMIGOS DEL GLOBO
+	            	<li>
+						<a href="{% url 'privacidad' %}">
+							Aviso de Privacidad
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							Licencias
+						<a href="{% url 'faq' %}">
+							Preguntas frecuentes
 						</a>
 					</li>
 	            </ul>
