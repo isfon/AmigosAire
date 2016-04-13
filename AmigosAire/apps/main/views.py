@@ -17,7 +17,6 @@ class IndexView(TemplateView):
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         context['carrusel'] = Carrusel.objects.all()[:4]
         context['galeria'] = Galeria.objects.all()[:10]
-        context['servicios'] = Servicios.objects.all()
         return context
 
     def post(self, request, *args, **kwargs):
@@ -41,6 +40,16 @@ class IndexView(TemplateView):
 	        	'mensaje':mensaje,
 	        }
     		return render(request, 'index.html',ctx)
+
+class PlanesView(TemplateView):
+
+    template_name = "planes.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PlanesView, self).get_context_data(**kwargs)
+        context['datos'] = DatosGenerales.objects.all()[:1].get()
+        context['servicios'] = Servicios.objects.all()
+        return context
 
 class PlanDetailView(DetailView):
 

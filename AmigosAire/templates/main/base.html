@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>{% block titulo %}{% endblock titulo %}</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href="{% static "css/materialize.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "css/style.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static "css/callouts.css" %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img src="{% static "img/logo.jpg" %}" class="logo" height="50"></a>
+      <ul class="right hide-on-med-and-down">
+        <li {% block inicio %}{% endblock inicio %}><a href="{% url 'index' %}">Inicio</a></li>
+        <li {% block servicios %}{% endblock servicios %}><a href="{% url 'planes' %}">Planes y Servicios</a></li>
+        <li {% block galeria %}{% endblock galeria %}><a href="#">Galería</a></li>
+        <li {% block contacto %}{% endblock contacto %}><a href="#">Contacto</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav white-text">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'planes' %}">Planes y Servicios</a></li>
+        <li><a href="#">Galería</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+
+  {% block contenido %}
+  	
+  {% endblock contenido %}
+  
+
+
+  
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l5 s12">
+          <h5 class="white-text">Vuelos en Globo Aguascalientes</h5>
+          <p class="grey-text text-lighten-4">Empresa Mexicana en la cual puedes vivir la experiencia de volar en globo aerostático y a su vez conocer nuestra herencia cultural deleitándote de una fascinante vista.</p>        
+          <h5>
+          	
+          </h5>
+      	  
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Contacto</h5>
+          <ul>
+            <li><a class="white-text"><i class="fa fa-phone" aria-hidden="true"></i> {{ datos.telefono_1 }}</a></li>
+            <li><a class="white-text"><i class="fa fa-phone-square" aria-hidden="true"></i> {{ datos.telefono_2 }}</a></li>
+            <li><a class="white-text"><i class="fa fa-envelope" aria-hidden="true"></i> {{ datos.email }}</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Redes Sociales</h5>
+          <ul>
+            <li><a class="white-text" href="{{ datos.facebook }}"> <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+            <li><a class="white-text" href="{{ datos.twitter }}"> <i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+            <li><a class="white-text" href="{{ datos.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      		<a class="white-text" href="http://materializecss.com">Preguntas Frecuentes </a> |
+          	<a class="white-text" href="http://materializecss.com">Privacidad </a> |
+      		      Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a class="brown-text text-lighten-3" href="http://materializecss.com">CocoBolo Labs</a><br/>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static "js/materialize.js" %}"></script>
+  <script src="{% static "js/init.js" %}"></script>
+
+  </body>
+</html>

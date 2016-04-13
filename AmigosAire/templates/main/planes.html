@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Vuelos|Planes{% endblock titulo %}
+{% block servicios %}class="active"{% endblock servicios %}
+{% block contenido %}
+	<div class="container">
+	    <div class="section">
+	      <div class="row">
+	        <div class="col s12">
+	        	<div class="row">
+	        		<h2 class="center-align">Planes y Servicios</h2>
+	        	</div>
+	        </div>
+	      </div>
+	      <div class="row">
+	      	{% for x in servicios %}
+		        <div class="col s6">
+		          <div class="card">
+		            <div class="card-image">
+		              <img src="{{ MEDIA_URL }}{{ x.imagen_1 }}" height="300">
+		              <strong class="card-title">{{ x.titulo|upper }}</strong>
+		            </div>
+		            <div class="card-content">
+		              <p>{{ x.descripcion|safe }}</p>
+		            </div>
+		            <div class="card-action">
+		              <a href="{% url 'plan_detalle' x.slug %}">Ver más..</a>
+		            </div>
+		          </div>
+		        </div>
+		      {% endfor %}
+	      </div>
+	    </div>
+    </div>
+{% endblock contenido %}
