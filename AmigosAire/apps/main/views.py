@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
+import json
 from django.views.generic import TemplateView, DetailView
 from .models import(
 	DatosGenerales,
@@ -16,30 +17,8 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         context['carrusel'] = Carrusel.objects.all()[:4]
-        context['galeria'] = Galeria.objects.all()[:10]
         return context
 
-    def post(self, request, *args, **kwargs):
-    	if "btn-mensaje" in request.POST:
-    		x = Mensajes()
-    		x.nombre = request.POST['nombre']
-    		x.telefono = request.POST['telefono']
-    		x.email = request.POST['email']
-    		x.mensaje = request.POST['mensaje']
-    		x.save()
-    		mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
-    		datos = DatosGenerales.objects.all()[:1].get()
-    		carrusel = Carrusel.objects.all()[:4]
-    		galeria = Galeria.objects.all()[:10]
-    		servicios = Servicios.objects.all()
-    		ctx = {
-	        	'datos':datos,
-	        	'carrusel':carrusel,
-	        	'galeria':galeria,
-	        	'servicios':servicios,
-	        	'mensaje':mensaje,
-	        }
-    		return render(request, 'index.html',ctx)
 
 class PlanesView(TemplateView):
 
@@ -63,6 +42,16 @@ class PlanDetailView(DetailView):
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         return context
 
+class GaleriaView(TemplateView):
+
+    template_name = "galeria.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(GaleriaView, self).get_context_data(**kwargs)
+        context['datos'] = DatosGenerales.objects.all()[:1].get()
+        context['galeria'] = Galeria.objects.all()[:10]
+        return context
+
 class PrivacidadView(TemplateView):
 
     template_name = "privacidad.html"
@@ -80,3 +69,52 @@ class PreguntasView(TemplateView):
         context = super(PreguntasView, self).get_context_data(**kwargs)
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         return context
+
+class ContactoView(TemplateView):
+
+    template_name = "contacto.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactoView, self).get_context_data(**kwargs)
+        context['datos'] = DatosGenerales.objects.all()[:1].get()
+        return context
+
+class EnviarMensaje(TemplateView):
+    
+    def get(self, request, *args, **kwargs):
+        x = Mensajes()
+        aux = False
+        if request.GET['nombre']:
+            x.nombre = request.GET['nombre']
+            aux = True
+            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
+        else:
+            mensaje = 'Por Favor llena todos los datos'
+            aux = False
+        if request.GET['telefono']:
+            x.telefono = request.GET['telefono']
+            aux = True
+            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
+        else:
+            mensaje = 'Por Favor llena todos los datos'
+            aux = False
+        if request.GET['correo']:
+            x.email = request.GET['correo']
+            aux = True
+            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
+        else:
+            mensaje = 'Por Favor llena todos los datos'
+            aux = False
+        if request.GET['mensaje']:
+            x.mensaje = request.GET['mensaje']
+            aux = True
+            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
+        else:
+            mensaje = 'Por Favor llena todos los datos'
+            aux = False
+        if aux:
+            x.save()
+        ctx = {
+            'mensaje':mensaje,
+        }
+        return HttpResponse(json.dumps(ctx), content_type='application/json')

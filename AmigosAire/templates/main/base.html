@@ -15,20 +15,26 @@
 </head>
 <body>
   <nav class="teal" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo"><img src="{% static "img/logo.jpg" %}" class="logo" height="50"></a>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        {% if fondo %}
+          <img src="{{ MEDIA_URL }}{{ datos.fondo }}" class="logo" height="85">
+        {% else %}
+          <img src="{% static "img/logo.png" %}" class="logo" height="85">
+        {% endif %}
+      </a>
       <ul class="right hide-on-med-and-down">
         <li {% block inicio %}{% endblock inicio %}><a href="{% url 'index' %}">Inicio</a></li>
         <li {% block servicios %}{% endblock servicios %}><a href="{% url 'planes' %}">Planes y Servicios</a></li>
-        <li {% block galeria %}{% endblock galeria %}><a href="#">Galería</a></li>
-        <li {% block contacto %}{% endblock contacto %}><a href="#">Contacto</a></li>
+        <li {% block galeria %}{% endblock galeria %}><a href="{% url 'galeria' %}">Galería</a></li>
+        <li {% block contacto %}{% endblock contacto %}><a href="{% url 'contacto' %}">Contacto</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav white-text">
         <li><a href="{% url 'index' %}">Inicio</a></li>
         <li><a href="{% url 'planes' %}">Planes y Servicios</a></li>
-        <li><a href="#">Galería</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="{% url 'galeria' %}">Galería</a></li>
+        <li><a href="{% url 'contacto' %}">Contacto</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -74,8 +80,8 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      		<a class="white-text" href="http://materializecss.com">Preguntas Frecuentes </a> |
-          	<a class="white-text" href="http://materializecss.com">Privacidad </a> |
+      		<a class="white-text" href="{% url 'faq' %}">Preguntas Frecuentes </a> |
+          	<a class="white-text" href="{% url 'privacidad' %}">Privacidad </a> |
       		      Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a class="brown-text text-lighten-3" href="http://materializecss.com">CocoBolo Labs</a><br/>
       </div>
     </div>

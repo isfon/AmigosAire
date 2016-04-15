@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}Vuelo|Galería{% endblock titulo %}
+{% block galeria %}class="active"{% endblock galeria %}
+{% block contenido %}
+	<div class="main main-raised">
+		<div class="section" id="carousel">
+			<h2 class="center-align">GALERÍA</h2>
+			<div class="row">
+				{% for x in galeria %}
+					<div class="col m3">
+						<img src="{{ MEDIA_URL }}{{ x.imagen }}" class="materialboxed" width="300" height="300" data-caption="{{ x.titulo|upper }}"><br/>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	<div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">DISFRUTA DE LAS MEJORES VISTAS DE AGUASCALIENTES</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static "img/der3.JPG" %}"></div>
+  </div>
+
+{% endblock contenido %}

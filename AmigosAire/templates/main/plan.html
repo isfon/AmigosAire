@@ -3,6 +3,20 @@
 {% block titulo %}Vuela|{{ plan.titulo }}{% endblock titulo %}
 {% block servicios %}class="active"{% endblock servicios %}
 {% block contenido %}
+	<div id="index-banner" class="parallax-container">
+	    <div class="section no-pad-bot">
+	      <div class="container">
+	        <br><br>
+	        <h2 class="header center teal-text text-darken-3">VUELO EN GLOBO AGUASCALIENTES</h2>
+	        <div class="row center">
+	          <h4 class="header col s12 light">Ven a volar en uno de nuestros globos y disfruta de una experiencia inolvidable.<br/></h4>
+	        </div>
+	        <br><br>
+
+	      </div>
+	    </div>
+	    <div class="parallax"><img src="{% static "img/fondo.jpg" %}" alt="Unsplashed background img 1"></div>
+	</div><br/>
 	<div class="main main-raised">
 		<div class="section" id="carousel">
 		<div class="container">
@@ -38,18 +52,6 @@
 					  <li>Teléfono 1: {{ datos.telefono_1 }}</li>
 					  <li>Teléfono 2: {{ datos.telefono_2 }}</li>
 					  <li>Email: {{ datos.email }}</li>
-					  <strong><p>Redes Sociales:</p></strong>
-					  <h3>
-						<a rel="tooltip" title="Follow us on Twitter" class="teal-text" data-placement="bottom" href="{{ datos.twitter }}" target="_blank">
-							<i class="fa fa-twitter"></i>
-						</a>
-						<a rel="tooltip" class="teal-text" title="Like us on Facebook" data-placement="bottom" href="{{ datos.facebook }}" target="_blank">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-						<a rel="tooltip" class="teal-text" title="Follow us on Instagram" data-placement="bottom" href="{{ datos.instagram }}" target="_blank">
-							<i class="fa fa-instagram"></i>
-						</a>
-					  </h3>
 					</div>
 				</div>
 			</div>
