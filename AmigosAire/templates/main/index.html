@@ -3,63 +3,177 @@
 {% block titulo %}VUELO|INICIO{% endblock titulo %}
 {% block inicio %}class="active"{% endblock inicio %}
 {% block contenido %}
-	<div id="index-banner" class="parallax-container">
-	    <div class="section no-pad-bot">
-	      <div class="container">
-	        <br><br>
-	        <h2 class="header center teal-text text-darken-3">VUELO EN GLOBO AGUASCALIENTES</h2>
-	        <div class="row center">
-	          <h4 class="header col s12 light">Ven a volar en uno de nuestros globos y disfruta de una experiencia inolvidable.<br/></h4>
-	          <h5>Admira desde el cielo los hermosos paisajes de Aguascalientes y vive la experiencia única de sentirte libre flotando en uno de los globos más grandes y espectaculares.</h5>
-	          
-	        </div>
-	        <br><br>
+<div id="home">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
 
-	      </div>
-	    </div>
-	    <div class="parallax"><img src="{% static "img/fondo.jpg" %}" alt="Unsplashed background img 1"></div>
-	</div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      {% for x in carrusel %}
+        {% if forloop.counter0 %}
+          <div class="item active">
+            <img src="{{ MEDIA_URL }}{{ x.imagen }}" style="height:545px;">
+          </div>
+        {% else %}
+          <div class="item">
+            <img src="{{ MEDIA_URL }}{{ x.imagen }}" style="height:545px;">
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
 
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Cirlce Starts -->
+<div id="about"  class="container spacer about">
+<h2 class="text-center wowload fadeInUp">QUIENES SOMOS</h2> 
+  <div class="col-sm-12">
+    <p style="font-size:18px;">Somos una empresa Mexicana en la cual puedes vivir la experiencia de volar en globo aerostático y a su   vez conocer nuestra herencia cultural deleitándote de una fascinante vista.
+        Desde 1783 el sueño humano de volar se hizo realidad siendo testigo de este hecho por primera vez la ciudad de Paris. Desde entonces el vuelo en globo ha causado asombro en todo el mundo.</p>
+  </div> 
+  <div class="row">
+  <div class="col-sm-6 wowload fadeInLeft">
+    <img src="{% static "images/izquierda.jpg" %}" class="img-thumbnail" width="450"><br/>
+    <h4>Vuelo</h4>
+    <p style="font-size:18px;">Ven a volar en uno de los globos más grandes y espectaculares de la zona. Contamos con una flotilla de calidad, así como con los mejores pilotos. Nuestro objetivo ha sido y seguirá siendo brindar experiencias inolvidables.</p>
+    
+
+  </div>
+  <div class="col-sm-6 wowload fadeInRight">
+    <img src="{% static "images/derecha.jpg" %}" class="img-thumbnail" width="450"><br/>
+    <h4>Empresa</h4>
+    <p style="font-size:18px;">Con el paso del tiempo la empresa ha ido innovando y creando servicios extras al vuelo en globo con el fin de satisfacer totalmente a nuestros clientes haciendo su estancia la mejor aventura.</p>    
+    </div>
+  </div>
+
+</div>
+<!-- #Cirlce Ends -->
+
+
+
+<br/>
+<br/>
+
+
+<!-- works -->
+<div id="galeria"  class=" clearfix grid"> 
+<h2 class="text-center wowload fadeInUp">GALERÍA</h2> 
+  {% for x in galeria %}
+    <figure class="effect-oscar  wowload fadeIn">
+        <img src="{{ MEDIA_URL }}{{ x.imagen }}" width="450" height="350" />
+        <figcaption>
+            <h2>{{ x.titulo }}</h2>
+            <a href="{{ MEDIA_URL }}{{ x.imagen }}" title="{{ x.titulo }}" data-gallery>VER</a></p>            
+        </figcaption>
+    </figure>
+  {% endfor %}
+</div>
+<!-- works -->
+
+    <!-- Indicators -->
+  </div>
+
+
+
+    </div>
+  </div>
+
+
+<!-- team -->
+<div id="servicios">
+  <h3 class="text-center  wowload fadeInUp">SERVICIOS</h3>
+  <div class="row grid team  wowload fadeInUpBig"> 
+    {% for x in servicios %}
+       <div class=" col-sm-6 col-xs-12">
+        <figure class="effect-chico">
+              <img src="{{ MEDIA_URL }}{{ x.imagen_1 }}"  class="img-responsive" />
+              <figcaption>
+                <h2>{{ x.titulo }}</h2>
+                <a href="{% url 'plan_detalle' x.slug %}">VER</a></p>            
+            </figcaption>
+          </figure>
+          </div>
+     {% endfor %} 
+  </div>
+<!-- team -->
+
+</div>
+
+<div id="ofertas">
+  <h3 class="text-center  wowload fadeInUp">PROMOCIONES</h3>
+{% if promociones %}
   <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12">
-        	<div class="row">
-        		<h2 class="center-align">QUIENES SOMOS</h2>
-        		<p class="valign">Somos una empresa Mexicana en la cual puedes vivir la experiencia de volar en globo aerostático y a su 	vez conocer nuestra herencia cultural deleitándote de una fascinante vista.
-				Desde 1783 el sueño humano de volar se hizo realidad siendo testigo de este hecho por primera vez la ciudad de Paris. Desde entonces el vuelo en globo ha causado asombro en todo el mundo.</p>
-        	</div>
-        	<div class="row">
-        		<div class="col m6">
-        			<img src="{% static "img/izquierda.jpg" %}" class="img-responsive" width="450">
-        			<p class="center-align">Ven a volar en uno de los globos más grandes y espectaculares de la zona. Contamos con una flotilla de calidad, así como con los mejores pilotos. Nuestro objetivo ha sido y seguirá siendo brindar experiencias inolvidables.</p>
-        			
-        		</div>
-        		<div class="col m6">
-        			<img src="{% static "img/derecha.jpg" %}" class="img-responsive" width="450">
-        			<p class="center-align">Con el paso del tiempo la empresa ha ido innovando y creando servicios extras al vuelo en globo con el fin de satisfacer totalmente a nuestros clientes haciendo su estancia la mejor aventura.</p>
-        		</div>
-        	</div>
+    {% for x in promociones %}
+      <div class="row bs-callout bs-callout-danger">
+        <div class="col-md-4">
+          <img src="{{ MEDIA_URL }}{{ x.imagen }}" class="img-thumbnail" style="width:300px; height:300px;">
+          <img src="{% static "images/oferta.png" %}" class="sobre" width="300" style="padding-left:20px;">
+        </div>
+        <div class="col-md-4">
+          <h4><strong>{{ x.titulo|upper }}</strong></h4>
+          <p>{{ x.promocion|safe }}</p>
+          {% if x.precio %}
+            <h4 style="color:#5cb85c;"><i class="fa fa-tags" aria-hidden="true"></i>${{ x.precio }}</h4>
+          {% endif %}
         </div>
       </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <h4 class="text-center  wowload fadeInUp">Por el momento no tenemos ofertas <strong>:(</strong></h4>
+  <p class="text-center  wowload fadeInLeft">¡Quedate al pendiente en nuestras redes sociales, pronto tendremos nuevas ofertas!</p>
+{% endif %}
+</div>
+<br/>
+
+
+<!--Contact Starts-->
+<div id="contact" class="spacer" style="color:#666;">
+
+  <div class="container contactform center">
+    <h2 class="text-center  wowload fadeInUp">Contacto</h2>
+    <div class="row wowload fadeInLeftBig">      
+        <div class="col-sm-6">      
+          <input type="text" placeholder="Nombre">
+          <input type="number" placeholder="Teléfono">
+          <textarea rows="5" placeholder="Mensaje"></textarea>
+          <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Enviar</button>
+        </div>
+        <div class="col-sm-6">
+          <p><strong><i class="fa fa-phone" aria-hidden="true"></i></strong> {{ datos.telefono_1 }}</p>
+          <p><strong><i class="fa fa-phone-square" aria-hidden="true"></i></strong> {{ datos.telefono_2 }}</p>
+          <p><strong><i class="fa fa-envelope" aria-hidden="true"></i></strong> {{ datos.email }}</p>
+          <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i></strong> {{ datos.domicilio }}</p>
+        </div>
     </div>
   </div>
 
-
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">DISFRUTA DE LAS MEJORES VISTAS DE AGUASCALIENTES</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="{% static "img/der.JPG" %}"></div>
-  </div>
-
+</div>
+<!--Contact Ends-->
 
 {% endblock contenido %}

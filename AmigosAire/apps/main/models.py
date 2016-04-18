@@ -12,7 +12,6 @@ class DatosGenerales(models.Model):
 	facebook = models.URLField(null=True,blank=True)
 	twitter = models.URLField(null=True,blank=True)
 	instagram = models.URLField(null=True,blank=True)
-	fondo = models.ImageField(upload_to="fondo",null=True,blank=True,help_text='Esta imagen es la de fondo donde esta el menú')
 	privacidad = models.TextField(null=True,blank=True)
 	preguntas = models.TextField(null=True,blank=True)
 
@@ -80,3 +79,21 @@ class Mensajes(models.Model):
 
 	def __str__(self):
 		return '%s'%self.nombre
+
+
+class Promocion(models.Model):
+
+	titulo = models.CharField(max_length=50)
+	imagen = models.ImageField(upload_to="servicios")
+	promocion = models.TextField()
+	precio = models.CharField(max_length=50, null=True, blank=True)
+	publicar = models.BooleanField(default=True)
+
+	class Meta:
+		verbose_name = "Promocion"
+		verbose_name_plural = "Promociones"
+
+
+	def __str__(self):
+		return '%s'%self.titulo
+    

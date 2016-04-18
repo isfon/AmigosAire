@@ -3,10 +3,10 @@
 {% block titulo %}Vuela|Privacidad{% endblock titulo %}
 {% block contenido %}
 
-	<div class="main main-raised">
+	<div class="main main-raised" style="padding-top:100px;">
 		<div class="section" id="carousel">
 			<div class="container">
-				<button onclick="history.go(-1);" class="btn btn-raised btn-info"><h5><i class="material-icons">skip_previous</i> Regresar</h5></button><br/>
+				<a href="{% url 'index' %}"><h5 class="btn btn-success">Regresar</h5></a><br/>
 				{{ datos.privacidad|safe }}
 			</div>
 		</div>

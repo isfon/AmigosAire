@@ -4,7 +4,8 @@ from .models import(
 	Carrusel,
 	Galeria,
 	Servicios,
-	Mensajes
+	Mensajes,
+	Promocion
 	)
 
 class DatosAdmin(admin.ModelAdmin):
@@ -13,13 +14,13 @@ class DatosAdmin(admin.ModelAdmin):
 
 	fieldsets = (
 		('Datos Generales', {'fields': ('nombre_empresa','logo','telefono_1','telefono_2','domicilio','email','video',
-			'facebook','twitter','instagram','fondo')}),
+			'facebook','twitter','instagram')}),
 		('Aviso Privacidad', {'fields': ('privacidad',)}),
         ('Preguntas Frecuentes', {'fields': ('preguntas',)}),
     )
 
 	class Media:
-		js =('js/tiny_mce/tinymce.min.js','js/basic_config.js')
+		js =('tiny_mce/tinymce.min.js','basic_config.js')
 
 class ServiciosAdmin(admin.ModelAdmin):
 
@@ -35,14 +36,22 @@ class ServiciosAdmin(admin.ModelAdmin):
     )
 
 	class Media:
-		js =('js/tiny_mce/tinymce.min.js','js/basic_config.js')
+		js =('tiny_mce/tinymce.min.js','basic_config.js')
 
 class MensajesAdmin(admin.ModelAdmin):
 
 	list_display =('nombre','telefono', 'email', 'mensaje')
+
+class PromocionAdmin(admin.ModelAdmin):
+
+	list_display =('titulo','promocion',)
+
+	class Media:
+		js =('tiny_mce/tinymce.min.js','basic_config.js')
 
 admin.site.register(DatosGenerales,DatosAdmin)
 admin.site.register(Carrusel)
 admin.site.register(Galeria)
 admin.site.register(Servicios,ServiciosAdmin)
 admin.site.register(Mensajes,MensajesAdmin)
+admin.site.register(Promocion,PromocionAdmin)

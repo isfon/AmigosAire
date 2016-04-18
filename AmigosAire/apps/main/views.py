@@ -6,7 +6,8 @@ from .models import(
 	Carrusel,
 	Galeria,
 	Servicios,
-	Mensajes
+	Mensajes,
+    Promocion
 	)
 
 class IndexView(TemplateView):
@@ -16,7 +17,10 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['datos'] = DatosGenerales.objects.all()[:1].get()
-        context['carrusel'] = Carrusel.objects.all()[:4]
+        context['galeria'] = Galeria.objects.all()[:10]
+        context['servicios'] = Servicios.objects.all()
+        context['carrusel'] = Carrusel.objects.all()[:5]
+        context['promociones'] = Promocion.objects.filter(publicar=True)
         return context
 
 
