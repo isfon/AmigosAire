@@ -23,6 +23,17 @@ class IndexView(TemplateView):
         context['promociones'] = Promocion.objects.filter(publicar=True)
         return context
 
+    def post(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        if "btn-enviar" in request.POST:
+            mensaje = Mensajes()
+            mensaje.nombre = request.POST['nombre']
+            mensaje.telefono = request.POST['telefono']
+            mensaje.mensaje = request.POST['mensaje']
+            mensaje.save()
+            context['mensaje'] = '¡Su mensaje fué enviado exitosamente, pronto nos comunicaremos con usted gracias!'
+            return render(request, 'index.html', context)
+
 
 class PlanesView(TemplateView):
 

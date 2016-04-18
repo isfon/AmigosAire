@@ -3,6 +3,9 @@
 {% block titulo %}VUELO|INICIO{% endblock titulo %}
 {% block inicio %}class="active"{% endblock inicio %}
 {% block contenido %}
+{% if mensaje %}
+  <div class="alert alert-success alert-dismissible fade in" role="alert" style="padding-top:120px;"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>{{ mensaje }}</div>
+{% endif %}
 <div id="home">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -157,12 +160,14 @@
 
   <div class="container contactform center">
     <h2 class="text-center  wowload fadeInUp">Contacto</h2>
-    <div class="row wowload fadeInLeftBig">      
+    <div class="row wowload fadeInLeftBig">  
+      <form method="post">
+        {% csrf_token %}   
         <div class="col-sm-6">      
-          <input type="text" placeholder="Nombre">
-          <input type="number" placeholder="Teléfono">
-          <textarea rows="5" placeholder="Mensaje"></textarea>
-          <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Enviar</button>
+          <input type="text" placeholder="Nombre" name="nombre">
+          <input type="number" placeholder="Teléfono" name="telefono">
+          <textarea rows="5" placeholder="Mensaje" name="mensaje"></textarea>
+          <button class="btn btn-primary" name="btn-enviar"><i class="fa fa-paper-plane"></i> Enviar</button>
         </div>
         <div class="col-sm-6">
           <p><strong><i class="fa fa-phone" aria-hidden="true"></i></strong> {{ datos.telefono_1 }}</p>
@@ -170,6 +175,7 @@
           <p><strong><i class="fa fa-envelope" aria-hidden="true"></i></strong> {{ datos.email }}</p>
           <p><strong><i class="fa fa-map-marker" aria-hidden="true"></i></strong> {{ datos.domicilio }}</p>
         </div>
+      </form> 
     </div>
   </div>
 

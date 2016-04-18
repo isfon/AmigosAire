@@ -40,7 +40,7 @@ class ServiciosAdmin(admin.ModelAdmin):
 
 class MensajesAdmin(admin.ModelAdmin):
 
-	list_display =('nombre','telefono', 'email', 'mensaje')
+	list_display =('nombre','telefono', 'mensaje')
 
 class PromocionAdmin(admin.ModelAdmin):
 
