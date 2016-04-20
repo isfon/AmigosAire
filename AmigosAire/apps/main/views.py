@@ -53,16 +53,6 @@ class IndexView(TemplateView):
             return render_to_response('index.html',context, context_instance=RequestContext(request))
 
 
-class PlanesView(TemplateView):
-
-    template_name = "planes.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(PlanesView, self).get_context_data(**kwargs)
-        context['datos'] = DatosGenerales.objects.all()[:1].get()
-        context['servicios'] = Servicios.objects.all()
-        return context
-
 class PlanDetailView(DetailView):
 
     model = Servicios
@@ -75,15 +65,6 @@ class PlanDetailView(DetailView):
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         return context
 
-class GaleriaView(TemplateView):
-
-    template_name = "galeria.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(GaleriaView, self).get_context_data(**kwargs)
-        context['datos'] = DatosGenerales.objects.all()[:1].get()
-        context['galeria'] = Galeria.objects.all()[:10]
-        return context
 
 class PrivacidadView(TemplateView):
 
@@ -103,51 +84,3 @@ class PreguntasView(TemplateView):
         context['datos'] = DatosGenerales.objects.all()[:1].get()
         return context
 
-class ContactoView(TemplateView):
-
-    template_name = "contacto.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(ContactoView, self).get_context_data(**kwargs)
-        context['datos'] = DatosGenerales.objects.all()[:1].get()
-        return context
-
-class EnviarMensaje(TemplateView):
-    
-    def get(self, request, *args, **kwargs):
-        x = Mensajes()
-        aux = False
-        if request.GET['nombre']:
-            x.nombre = request.GET['nombre']
-            aux = True
-            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
-        else:
-            mensaje = 'Por Favor llena todos los datos'
-            aux = False
-        if request.GET['telefono']:
-            x.telefono = request.GET['telefono']
-            aux = True
-            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
-        else:
-            mensaje = 'Por Favor llena todos los datos'
-            aux = False
-        if request.GET['correo']:
-            x.email = request.GET['correo']
-            aux = True
-            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
-        else:
-            mensaje = 'Por Favor llena todos los datos'
-            aux = False
-        if request.GET['mensaje']:
-            x.mensaje = request.GET['mensaje']
-            aux = True
-            mensaje = 'Tu información fué enviada con exito, pronto nos pondremos en contacto con usted.'
-        else:
-            mensaje = 'Por Favor llena todos los datos'
-            aux = False
-        if aux:
-            x.save()
-        ctx = {
-            'mensaje':mensaje,
-        }
-        return HttpResponse(json.dumps(ctx), content_type='application/json')
