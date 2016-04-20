@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block titulo %}VUELO|INICIO{% endblock titulo %}
+{% block titulo %}VUELO EN GLOBO AGUASCALIENTES{% endblock titulo %}
 {% block inicio %}class="active"{% endblock inicio %}
 {% block contenido %}
 {% if mensaje %}
-  <div class="alert alert-success alert-dismissible fade in" role="alert" style="padding-top:120px;"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>{{ mensaje }}</div>
+  <div class="alert alert-success alert-dismissible fade in" role="alert" style="padding-top:100px;"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><p>{{ mensaje }}.</p> </div>
 {% endif %}
 <div id="home">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -54,6 +54,7 @@
 
 <!-- Cirlce Starts -->
 <div id="about"  class="container spacer about">
+<h1 class="text-center wowload fadeInUp">VUELO EN GLOBO AGUASCALIENTES</h1>
 <h2 class="text-center wowload fadeInUp">QUIENES SOMOS</h2> 
   <div class="col-sm-12">
     <p style="font-size:18px;">Somos una empresa Mexicana en la cual puedes vivir la experiencia de volar en globo aerostático y a su   vez conocer nuestra herencia cultural deleitándote de una fascinante vista.
@@ -61,14 +62,14 @@
   </div> 
   <div class="row">
   <div class="col-sm-6 wowload fadeInLeft">
-    <img src="{% static "images/izquierda.jpg" %}" class="img-thumbnail" width="450"><br/>
+    <img src="{% static "images/izquierda_opt.jpg" %}" class="img-thumbnail" width="450"><br/>
     <h4>Vuelo</h4>
     <p style="font-size:18px;">Ven a volar en uno de los globos más grandes y espectaculares de la zona. Contamos con una flotilla de calidad, así como con los mejores pilotos. Nuestro objetivo ha sido y seguirá siendo brindar experiencias inolvidables.</p>
     
 
   </div>
   <div class="col-sm-6 wowload fadeInRight">
-    <img src="{% static "images/derecha.jpg" %}" class="img-thumbnail" width="450"><br/>
+    <img src="{% static "images/derecha_opt.jpg" %}" class="img-thumbnail" width="450"><br/>
     <h4>Empresa</h4>
     <p style="font-size:18px;">Con el paso del tiempo la empresa ha ido innovando y creando servicios extras al vuelo en globo con el fin de satisfacer totalmente a nuestros clientes haciendo su estancia la mejor aventura.</p>    
     </div>
@@ -164,9 +165,9 @@
       <form method="post">
         {% csrf_token %}   
         <div class="col-sm-6">      
-          <input type="text" placeholder="Nombre" name="nombre">
-          <input type="number" placeholder="Teléfono" name="telefono">
-          <textarea rows="5" placeholder="Mensaje" name="mensaje"></textarea>
+          <input type="text" placeholder="Nombre" name="nombre" required="">
+          <input type="number" placeholder="Teléfono" name="telefono" required="">
+          <textarea rows="5" placeholder="Mensaje" name="mensaje" required=""></textarea>
           <button class="btn btn-primary" name="btn-enviar"><i class="fa fa-paper-plane"></i> Enviar</button>
         </div>
         <div class="col-sm-6">

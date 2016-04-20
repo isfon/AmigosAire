@@ -5,6 +5,9 @@
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Vuelo en globo aguascalientes ven a volar con nosotros">
+<meta name="keywords" content="VUELO,GLOBO,AEROSTATICO,AGUASCALIENTES,ALTURAS,PABELLÓN,RINCON,ADRENALINA">
+<meta name="author" content="Antonio Fonseca">
 <title>{% block titulo %}{% endblock titulo %}</title>
 
 <!-- Google fonts -->
@@ -54,7 +57,7 @@
           <div class="container">
             <div class="navbar-header">
               <!-- Logo Starts -->
-              <a class="navbar-brand" href="#home">
+              <a class="navbar-brand" href="/">
                 {% if datos.logo %}
                   <img src="{{ MEDIA_URL }}{{ datos.logo }}" width="70">
                 {% else %}
@@ -104,7 +107,7 @@
 <!-- Footer Starts -->
 <div class="footer text-center spacer">
 <h3><strong>{{ datos.nombre_empresa|upper }}</strong></h3>
-<p class="wowload flipInX"><a href="{{ datos.facebook }}"><i class="fa fa-facebook fa-2x"></i></a> <a href="{{ datos.instagram }}"><i class="fa fa-instagram fa-2x"></i></a> <a href="{{ datos.twitter }}"><i class="fa fa-twitter fa-2x"></i></a></p>
+<p class="wowload flipInX"><a href="{{ datos.facebook }}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a> <a href="{{ datos.instagram }}" target="_blank"><i class="fa fa-instagram fa-2x"></i></a> <a href="{{ datos.twitter }}" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></p>
 <a href="{% url 'faq' %}">Preguntas Frecuentes</a>| <a href="{% url 'privacidad' %}"> Aviso de Privacidad</a>
 </div>
 <!-- # Footer Ends -->

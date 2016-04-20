@@ -13,7 +13,7 @@ class DatosAdmin(admin.ModelAdmin):
 	list_display =('nombre_empresa',)
 
 	fieldsets = (
-		('Datos Generales', {'fields': ('nombre_empresa','logo','telefono_1','telefono_2','domicilio','email','video',
+		('Datos Generales', {'fields': ('nombre_empresa','logo','telefono_1','telefono_2','domicilio','email',
 			'facebook','twitter','instagram')}),
 		('Aviso Privacidad', {'fields': ('privacidad',)}),
         ('Preguntas Frecuentes', {'fields': ('preguntas',)}),

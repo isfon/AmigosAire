@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, render_to_response, RequestContext
 import json
 from django.views.generic import TemplateView, DetailView
 from .models import(
@@ -7,8 +7,21 @@ from .models import(
 	Galeria,
 	Servicios,
 	Mensajes,
-    Promocion
+        Promocion
 	)
+from .forms import MensajesForm
+
+def handler404(request):
+    response = render_to_response('404.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+def handler500(request):
+    response = render_to_response('500.html', {},
+                                  context_instance=RequestContext(request))
+    response.status_code = 500
+    return response
 
 class IndexView(TemplateView):
 
@@ -21,18 +34,23 @@ class IndexView(TemplateView):
         context['servicios'] = Servicios.objects.all()
         context['carrusel'] = Carrusel.objects.all()[:5]
         context['promociones'] = Promocion.objects.filter(publicar=True)
+        context['form'] = MensajesForm()
         return context
 
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         if "btn-enviar" in request.POST:
-            mensaje = Mensajes()
-            mensaje.nombre = request.POST['nombre']
-            mensaje.telefono = request.POST['telefono']
-            mensaje.mensaje = request.POST['mensaje']
-            mensaje.save()
-            context['mensaje'] = '¡Su mensaje fué enviado exitosamente, pronto nos comunicaremos con usted gracias!'
-            return render(request, 'index.html', context)
+            form = MensajesForm(request.POST)
+            if form.is_valid():
+                mensaje = Mensajes()
+                mensaje.nombre = request.POST['nombre']
+                mensaje.telefono = request.POST['telefono']
+                mensaje.mensaje = request.POST['mensaje']
+                mensaje.save()
+                context['mensaje'] = '¡Su mensaje fué enviado exitosamente, pronto nos comunicaremos con usted gracias!'
+            else:
+                context['mensaje'] = 'Por favor llene todos los datos'
+            return render_to_response('index.html',context, context_instance=RequestContext(request))
 
 
 class PlanesView(TemplateView):

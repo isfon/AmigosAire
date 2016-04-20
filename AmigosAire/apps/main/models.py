@@ -8,7 +8,6 @@ class DatosGenerales(models.Model):
 	telefono_2 = models.CharField(max_length=50,null=True,blank=True)
 	domicilio = models.CharField(max_length=100,null=True,blank=True)
 	email = models.EmailField(null=True,blank=True)
-	video = models.URLField(null=True,blank=True,help_text='El formato es el siguiente "https://www.youtube.com/embed/Cu4UsFqz6Q8"')
 	facebook = models.URLField(null=True,blank=True)
 	twitter = models.URLField(null=True,blank=True)
 	instagram = models.URLField(null=True,blank=True)
